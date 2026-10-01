@@ -1,0 +1,45 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Iron Fitness Gym — training, classes and memberships.">
+  <title>{% block title %}Iron Fitness Gym{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="{% url 'home' %}"><span>IRON</span> FITNESS</a>
+    <button class="menu-toggle" type="button" aria-label="Open menu" onclick="document.body.classList.toggle('menu-open')">☰</button>
+    <nav class="nav">
+      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'about' %}">About</a>
+      <a href="{% url 'services' %}">Services</a>
+      <a href="{% url 'classes' %}">Classes</a>
+      <a href="{% url 'trainers' %}">Trainers</a>
+      <a href="{% url 'membership' %}">Membership</a>
+      <a href="{% url 'contact' %}">Contact</a>
+      {% if user.is_authenticated %}
+        <a class="nav-pill" href="{% url 'dashboard' %}">My Account</a>
+        <form class="logout-form" action="{% url 'logout' %}" method="post">{% csrf_token %}<button type="submit">Logout</button></form>
+      {% else %}
+        <a href="{% url 'login' %}">Login</a>
+        <a class="nav-pill" href="{% url 'register' %}">Join Now</a>
+      {% endif %}
+    </nav>
+  </div>
+</header>
+{% include "partials/messages.html" %}
+<main>{% block content %}{% endblock %}</main>
+<footer class="footer">
+  <div class="container footer-grid">
+    <div><a class="brand" href="{% url 'home' %}"><span>IRON</span> FITNESS</a><p>Train smart. Get stronger. Live better.</p></div>
+    <div><h4>Quick Links</h4><a href="{% url 'classes' %}">Classes</a><a href="{% url 'membership' %}">Membership</a><a href="{% url 'contact' %}">Contact</a></div>
+    <div><h4>Gym Hours</h4><p>Mon – Sat: 5:00 AM – 10:00 PM</p><p>Sunday: 6:00 AM – 2:00 PM</p></div>
+  </div>
+  <div class="container footer-bottom">© {% now "Y" %} Iron Fitness Gym. All rights reserved.</div>
+</footer>
+</body>
+</html>

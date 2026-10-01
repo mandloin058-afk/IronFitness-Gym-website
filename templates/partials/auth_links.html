@@ -1,0 +1,13 @@
+{# Menu items for account links. Adjust the tags/classes to match your nav markup. #}
+{% if user.is_authenticated %}
+<li class="nav-item"><a class="nav-link" href="{% url 'dashboard' %}">My Account</a></li>
+<li class="nav-item">
+  <form method="post" action="{% url 'logout' %}" style="display:inline">
+    {% csrf_token %}
+    <button type="submit" class="nav-link btn btn-link" style="display:inline">Logout</button>
+  </form>
+</li>
+{% else %}
+<li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Login</a></li>
+<li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
+{% endif %}

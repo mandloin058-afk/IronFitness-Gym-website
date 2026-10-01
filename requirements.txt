@@ -1,0 +1,7 @@
+Django>=5.2,<5.3
+PyMySQL>=1.1
+cryptography>=42
+certifi
+whitenoise>=6.6
+Pillow>=10.3
+python-dotenv>=1.0
