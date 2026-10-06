@@ -1,5 +1,6 @@
 from django.contrib.auth import views as auth_views
 from django.urls import path
+from django.views.generic import RedirectView   # ye nayi line
 from . import views
 from .forms import LoginForm
 
