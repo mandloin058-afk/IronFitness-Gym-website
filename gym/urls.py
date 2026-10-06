@@ -20,9 +20,9 @@ urlpatterns = [
         authentication_form=LoginForm,
         redirect_authenticated_user=True,
     ), name="login"),
-    path("logout/", auth_views.LogoutView.as_view(), name="logout"),
-    path("dashboard/", views.dashboard, name="dashboard"),
-    path("membership/join/<slug:slug>/", views.join_plan, name="join_plan"),
-    path("book/", views.book_class, name="book_class"),
+    path("09/", auth_views.LogoutView.as_view(), name="logout"),
+    path("10/", views.dashboard, name="dashboard"),
+    path("04/join/<slug:slug>/", views.join_plan, name="join_plan"),
+    path("11/", views.book_class, name="book_class"),
     path("bookings/<int:pk>/cancel/", views.cancel_booking, name="cancel_booking"),
 ]
