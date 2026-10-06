@@ -1,5 +1,5 @@
 """Database models for the Iron Fitness Gym backend."""
-from datetime import timedelta
+from datetime import timedelta   
 
 from django.conf import settings
 from django.core.exceptions import ValidationError
@@ -11,7 +11,7 @@ from django.utils.text import slugify
 phone_validator = RegexValidator(
     regex=r"^\+?[0-9][0-9\s\-]{6,18}$",
     message="Enter a valid phone number (digits, spaces or dashes, optional leading +).",
-)
+)  
 
 DAY_ABBR = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
 
