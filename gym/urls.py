@@ -14,6 +14,7 @@ urlpatterns = [
     path("membership/", views.membership_page, name="membership"),
     path("contact/", views.contact_page, name="contact"),
     path("trainers/", views.trainers_page, name="trainers"),
+    path("register/", views.register, name="register"),
     path("login/", auth_views.LoginView.as_view(
         template_name="gym/login.html",
         authentication_form=LoginForm,
