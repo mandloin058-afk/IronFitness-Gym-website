@@ -14,13 +14,13 @@
     <a class="brand" href="{% url 'home' %}"><span>IRON</span> FITNESS</a>
     <button class="menu-toggle" type="button" aria-label="Open menu" onclick="document.body.classList.toggle('menu-open')">☰</button>
     <nav class="nav">
-      <a href="{% url 'home' %}">Home</a>
-      <a href="{% url 'about' %}">About</a>
-      <a href="{% url 'services' %}">Services</a>
-      <a href="{% url 'classes' %}">Classes</a>
-      <a href="{% url 'trainers' %}">Trainers</a>
-      <a href="{% url 'membership' %}">Membership</a>
-      <a href="{% url 'contact' %}">Contact</a>
+      <a href="{% url 'home' %}">00</a> 
+<a href="{% url 'about' %}">01</a> 
+<a href="{% url 'services' %}">02</a> 
+<a href="{% url 'classes' %}">03</a> 
+<a href="{% url 'trainers' %}">04</a> 
+<a href="{% url 'membership' %}">05</a> 
+<a href="{% url 'contact' %}">06</a>
       {% if user.is_authenticated %}
         <a class="nav-pill" href="{% url 'dashboard' %}">My Account</a>
         <form class="logout-form" action="{% url 'logout' %}" method="post">{% csrf_token %}<button type="submit">Logout</button></form>
