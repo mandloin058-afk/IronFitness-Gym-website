@@ -7,15 +7,15 @@ from .forms import LoginForm
 urlpatterns = [
     path("", views.home, name="home"),
     path("index/", views.home, name="index"),
-    path("about/", views.about_page, name="about"),
+    path("01/", views.about_page, name="about"),
     # path("about/", views.about_page, name="about"),
-    path("services/", views.services_page, name="services"),
-    path("classes/", views.classes_page, name="classes"),
-    path("membership/", views.membership_page, name="membership"),
-    path("contact/", views.contact_page, name="contact"),
-    path("trainers/", views.trainers_page, name="trainers"),
-    path("register/", views.register, name="register"),
-    path("login/", auth_views.LoginView.as_view(
+    path("02/", views.services_page, name="services"),
+    path("03/", views.classes_page, name="classes"),
+    path("04/", views.membership_page, name="membership"),
+    path("05/", views.contact_page, name="contact"),
+    path("06/", views.trainers_page, name="trainers"),
+    path("07/", views.register, name="register"),
+    path("08/", auth_views.LoginView.as_view(
         template_name="gym/login.html",
         authentication_form=LoginForm,
         redirect_authenticated_user=True,
