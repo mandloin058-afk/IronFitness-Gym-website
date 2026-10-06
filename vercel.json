@@ -1,17 +1,3 @@
-@'
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "iron_fitness/wsgi.py",
-      "use": "@vercel/python"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "iron_fitness/wsgi.py"
-    }
-  ]
+  "cleanUrls": true
 }
-'@ | Set-Content vercel.json
