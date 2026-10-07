@@ -1,0 +1,44 @@
+# Query: #d9ff3f
+# ContextLines: 1
+
+12 results - 2 files
+
+static\css\style.css:
+  54    }
+  55:   .plan-dropdown summary:hover { border-color: #d9ff3f; background: #20212a; }
+  56    .plan-dropdown summary::-webkit-details-marker { display: none; }
+
+  59      content: ""; width: 9px; height: 9px; margin-right: 4px;
+  60:     border-right: 2px solid #ff5f15,; border-bottom: 2px solid #ff5f15,;
+  61      transform: rotate(45deg); transition: transform .3s;
+  62    }
+  63:   .plan-dropdown[open] summary { border-color: #ff5f15,d9ff3f; border-radius: 12px 12px 0 0; }
+  64    .plan-dropdown[open] summary::after { transform: rotate(-135deg); }
+
+  69      list-style: none; margin: 0; padding: 8px 8px 10px;
+  70:     background: #16171d; border: 1px solid #ff5f15,; border-top: 0;
+  71      border-radius: 0 0 14px 14px;
+
+  90      width: 22px; height: 22px; border-radius: 50%;
+  91:     background: #ff5f15,; color: #0b0b0f; font-size: 12px; font-weight: 800;
+  92    }
+
+templates\gym\index.html:
+  17    }
+  18:   .plan-dropdown summary:hover { border-color: #ff5f15,; background: #20212a; }
+  19    .plan-dropdown summary::-webkit-details-marker { display: none; }
+
+  22      content: ""; width: 9px; height: 9px; margin-right: 4px;
+  23:     border-right: 2px solid #ff5f15,; border-bottom: 2px solid #ff5f15,;
+  24      transform: rotate(45deg); transition: transform .3s;
+  25    }
+  26:   .plan-dropdown[open] summary { border-color: #ff5f15,; border-radius: 12px 12px 0 0; }
+  27    .plan-dropdown[open] summary::after { transform: rotate(-135deg); }
+
+  31      list-style: none; margin: 0; padding: 8px 8px 10px;
+  32:     background: #16171d; border: 1px solid #ff5f15,; border-top: 0;
+  33      border-radius: 0 0 14px 14px;
+
+  51      width: 22px; height: 22px; border-radius: 50%;
+  52:     background: #ff5f15,; color: #0b0b0f; font-size: 12px; font-weight: 800;
+  53    }
