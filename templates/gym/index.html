@@ -92,13 +92,34 @@
 <section class="cta"><div class="container cta-inner"><div><span class="eyebrow">READY?</span><h2>Your next workout starts here.</h2></div><a class="btn btn-primary" href="{% url 'register' %}">Create Account</a></div></section>
 <script src="{% static 'js/counter.js' %}"></script>
 <script>
+ 
   const dds = document.querySelectorAll('details.plan-dropdown');
-  dds.forEach(d => d.addEventListener('toggle', () => {
-    if (d.open) dds.forEach(o => { if (o !== d) o.open = false; });
-  }));
-  document.addEventListener('click', e => {
-    dds.forEach(d => { if (!d.contains(e.target)) d.open = false; });
+  const canHover = window.matchMedia('(hover: hover)').matches;
+
+  dds.forEach(d => {
+    const summary = d.querySelector('summary');
+
+    if (canHover) {
+      // Laptop/desktop: cursor aate hi khule, hatte hi band
+      d.addEventListener('mouseenter', () => {
+        dds.forEach(o => { if (o !== d) o.open = false; });
+        d.open = true;
+      });
+      d.addEventListener('mouseleave', () => { d.open = false; });
+
+      // Click se dobara band na ho jaye
+      summary.addEventListener('click', e => e.preventDefault());
+    } else {
+      // Mobile: click/tap se khule, doosra khulne par pehla band
+      d.addEventListener('toggle', () => {
+        if (d.open) dds.forEach(o => { if (o !== d) o.open = false; });
+      });
+      document.addEventListener('click', e => {
+        dds.forEach(x => { if (!x.contains(e.target)) x.open = false; });
+      });
+    }
   });
+
 </script>
 
 {% endblock %}
