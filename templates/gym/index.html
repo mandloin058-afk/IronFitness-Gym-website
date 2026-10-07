@@ -5,60 +5,6 @@
 
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-<style>
-  .plan-dropdown { position: relative; margin: 18px 0 22px; }
-
-  .plan-dropdown summary {
-    cursor: pointer; list-style: none; user-select: none;
-    display: flex; align-items: center; gap: 12px;
-    padding: 14px 16px; font-size: 15px; font-weight: 600; color: #fff;
-    background: #1a1b22; border: 1px solid rgba(255,255,255,.14); border-radius: 12px;
-    transition: border-color .2s, background .2s;
-  }
-  .plan-dropdown summary:hover { border-color: #d9ff3f; background: #20212a; }
-  .plan-dropdown summary::-webkit-details-marker { display: none; }
-  .plan-dropdown summary .txt { flex: 1; text-align: left; }
-  .plan-dropdown summary::after {
-    content: ""; width: 9px; height: 9px; margin-right: 4px;
-    border-right: 2px solid #d9ff3f; border-bottom: 2px solid #d9ff3f;
-    transform: rotate(45deg); transition: transform .3s;
-  }
-  .plan-dropdown[open] summary { border-color: #d9ff3f; border-radius: 12px 12px 0 0; }
-  .plan-dropdown[open] summary::after { transform: rotate(-135deg); }
-
-  .plan-features {
-    position: absolute; left: 0; right: 0; top: 100%; z-index: 30;
-    list-style: none; margin: 0; padding: 8px 8px 10px;
-    background: #16171d; border: 1px solid #d9ff3f; border-top: 0;
-    border-radius: 0 0 14px 14px;
-    box-shadow: 0 22px 40px rgba(0,0,0,.7);
-    animation: planDrop .25s ease;
-  }
-  @keyframes planDrop {
-    from { opacity: 0; transform: translateY(-10px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-  .plan-features li {
-    display: flex; align-items: center; gap: 12px;
-    padding: 11px 10px; margin-top: 4px; font-size: 15px; color: #d6d6dc;
-    background: rgba(255,255,255,.04); border-radius: 8px;
-    transition: background .2s, transform .2s;
-  }
-  .plan-features li:hover { background: rgba(217,255,63,.12); color: #fff; transform: translateX(4px); }
-
-  .tick {
-    flex: none; display: grid; place-items: center;
-    width: 22px; height: 22px; border-radius: 50%;
-    background: #d9ff3f; color: #0b0b0f; font-size: 12px; font-weight: 800;
-  }
-
-  .plan-single-row {
-    display: flex; align-items: center; gap: 12px;
-    padding: 14px 16px; font-size: 15px; font-weight: 600; color: #fff;
-    background: #1a1b22; border: 1px solid rgba(255,255,255,.14); border-radius: 12px;
-  }
-</style>
-
 <section class="hero">
   <div class="container hero-content">
     <div class="eyebrow">STRONGER EVERY DAY</div>
@@ -92,7 +38,6 @@
 <section class="cta"><div class="container cta-inner"><div><span class="eyebrow">READY?</span><h2>Your next workout starts here.</h2></div><a class="btn btn-primary" href="{% url 'register' %}">Create Account</a></div></section>
 <script src="{% static 'js/counter.js' %}"></script>
 <script>
- 
   const dds = document.querySelectorAll('details.plan-dropdown');
   const canHover = window.matchMedia('(hover: hover)').matches;
 
@@ -100,17 +45,15 @@
     const summary = d.querySelector('summary');
 
     if (canHover) {
-      // Laptop/desktop: cursor aate hi khule, hatte hi band
+      // Laptop: cursor aate hi khule, hatte hi band
       d.addEventListener('mouseenter', () => {
         dds.forEach(o => { if (o !== d) o.open = false; });
         d.open = true;
       });
       d.addEventListener('mouseleave', () => { d.open = false; });
-
-      // Click se dobara band na ho jaye
       summary.addEventListener('click', e => e.preventDefault());
     } else {
-      // Mobile: click/tap se khule, doosra khulne par pehla band
+      // Mobile: tap se khule
       d.addEventListener('toggle', () => {
         if (d.open) dds.forEach(o => { if (o !== d) o.open = false; });
       });
@@ -119,7 +62,6 @@
       });
     }
   });
-
 </script>
 
 {% endblock %}

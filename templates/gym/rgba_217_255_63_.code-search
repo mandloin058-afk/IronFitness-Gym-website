@@ -1,0 +1,14 @@
+# Query: rgba(217,255,63,
+# ContextLines: 1
+
+2 results - 2 files
+
+static\css\style.css:
+  84    }
+  85:   .plan-features li:hover { background: rgba(255,95,21,.12); color: #fff; transform: translateX(4px); }
+  86  
+
+templates\gym\index.html:
+  46    }
+  47:   .plan-features li:hover { background: rgba(255,95,21,.12); color: #fff; transform: translateX(4px); }
+  48  
