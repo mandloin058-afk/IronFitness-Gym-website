@@ -5,6 +5,28 @@
 
 <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
+<style>
+  .plan-dropdown { position: relative; margin: 16px 0; }
+  .plan-dropdown summary {
+    cursor: pointer; list-style: none;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 12px 14px; color: #fff; font-size: 16px;
+    border: 1px solid rgba(255,255,255,.2); border-radius: 8px;
+    background: rgba(255,255,255,.04);
+  }
+  .plan-dropdown summary::-webkit-details-marker { display: none; }
+  .plan-dropdown summary::after { content: "▾"; color: #d9ff3f; transition: transform .2s; }
+  .plan-dropdown[open] summary::after { transform: rotate(180deg); }
+  .plan-features {
+    position: absolute; left: 0; right: 0; top: calc(100% + 6px); z-index: 10;
+    list-style: none; margin: 0; padding: 6px 14px;
+    background: #16161a; border: 1px solid rgba(255,255,255,.2); border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,.5);
+  }
+  .plan-features li { padding: 10px 0; color: #cfcfd4; border-top: 1px solid rgba(255,255,255,.1); }
+  .plan-features li:first-child { border-top: 0; }
+</style>
+
 <section class="hero">
   <div class="container hero-content">
     <div class="eyebrow">STRONGER EVERY DAY</div>
@@ -34,7 +56,7 @@
   <div class="feature-grid"><article class="feature"><div class="icon">01</div><h3>Expert Coaching</h3><p>Structured guidance for strength, mobility and conditioning.</p></article><article class="feature"><div class="icon">02</div><h3>Modern Equipment</h3><p>Everything you need for focused, effective workouts.</p></article><article class="feature"><div class="icon">03</div><h3>Real Community</h3><p>A supportive gym environment built around consistency.</p></article></div>
 </section>
 <section class="section dark-section"><div class="container"><div class="section-head"><div><span class="eyebrow">MEMBERSHIPS</span><h2>Choose your plan.</h2></div><a class="text-link" href="{% url 'membership' %}">All plans →</a></div>
-<div class="card-grid">{% for plan in plans %}<article class="plan-card {% if plan.is_popular %}popular{% endif %}">{% if plan.is_popular %}<span class="tag">POPULAR</span>{% endif %}<h3>{{ plan.name }}</h3><div class="price">₹{{ plan.price|floatformat:0 }}<small>/{{ plan.duration_days }} days</small></div><p>{{ plan.description }}</p><ul>{% for f in plan.feature_list %}<li>✓ {{ f }}</li>{% endfor %}</ul><a class="btn btn-primary full" href="{% url 'join_plan' plan.slug %}">Choose Plan</a></article>{% empty %}<p>No plans yet. Run <code>python manage.py seed_demo_data</code>.</p>{% endfor %}</div></div></section>
+<div class="card-grid">{% for plan in plans %}<article class="plan-card {% if plan.is_popular %}popular{% endif %}">{% if plan.is_popular %}<span class="tag">POPULAR</span>{% endif %}<h3>{{ plan.name }}</h3><div class="price">₹{{ plan.price|floatformat:0 }}<small>/{{ plan.duration_days }} days</small></div><p>{{ plan.description }}</p><details class="plan-dropdown"><summary>View Features</summary><ul class="plan-features">{% for f in plan.feature_list %}<li>✓ {{ f }}</li>{% endfor %}</ul></details><a class="btn btn-primary full" href="{% url 'join_plan' plan.slug %}">Choose Plan</a></article>{% empty %}<p>No plans yet. Run <code>python manage.py seed_demo_data</code>.</p>{% endfor %}</div></div></section>
 <section class="cta"><div class="container cta-inner"><div><span class="eyebrow">READY?</span><h2>Your next workout starts here.</h2></div><a class="btn btn-primary" href="{% url 'register' %}">Create Account</a></div></section>
 <script src="{% static 'js/counter.js' %}"></script>
 
